@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -37,7 +31,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     height: 100,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F0F0F0',
+    marginHorizontal: 5,
+    marginTop: 5,
+    marginBottom: 0,
+    borderRadius: 5,
   },
   img: {
     height: 100,
@@ -49,7 +47,3 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 });
-
-//thumbnailURI
-//title
-// justifyContent: 'center', // primary axis ( col )
