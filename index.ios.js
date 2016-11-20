@@ -17,7 +17,6 @@ export default class gif extends Component {
       dataSource: ds.cloneWithRows(data)
     };
   }
-
   render() {
     return (
       <ListView
