@@ -1,49 +1,34 @@
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-} from 'react-native';
+import React from 'react';
+import { Text, View, Image } from 'react-native';
+import styled from "styled-components/native";
 
-export default class CategoryRow extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image
-          source={{
-            uri: this.props.thumbnailURI,
-          }}
-          style={styles.img}
-        />
-        <Text numberOfLines={1} style={styles.title}>
-          {this.props.title}
-        </Text>
-      </View>
-    );
-  }
-}
+const RowContainer = styled.View`
+  align-self: stretch;
+  flex-direction: row;
+  align-items: center;
+  height: 100;
+  background-color: #F0F0F0;
+  margin-horizontal: 5;
+  margin-top: 5;
+  margin-bottom: 0;
+  border-radius: 0;
+`;
 
-const styles = StyleSheet.create({
-  container: {
-    alignSelf: 'stretch',
-    flexDirection: "row",
-    alignItems: "center",
-    height: 100,
-    backgroundColor: '#F0F0F0',
-    marginHorizontal: 5,
-    marginTop: 5,
-    marginBottom: 0,
-    borderRadius: 5,
-  },
-  img: {
-    height: 100,
-    width: 100,
-  },
-  title: {
-    fontSize: 36,
-    fontWeight: "bold",
-    margin: 10,
-  },
-});
+const Thumbnail = styled.Image`
+  height: 100;
+  width: 100;
+`;
+
+const Title = styled.Text`
+  font-size: 36;
+  font-weight: bold;
+  margin: 10;
+`;
+
+export default CategoryRow = ({thumbnailURI, title}) =>
+  <RowContainer>
+    <Thumbnail source={{ uri: thumbnailURI }} />
+    <Title numberOfLines={1}>
+      {title}
+    </Title>
+  </RowContainer>

@@ -1,49 +1,54 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  View,
-  ListView,
-} from 'react-native';
+import { AppRegistry, View, ListView } from 'react-native';
+import styled from "styled-components/native";
 
-import data from "./imports/data";
 import CategoryRow from "./imports/components/CategoryRow.ios";
+import { getCategoriesData, updateCategories } from "./imports/util/categories";
+
+const ListOfCategories = styled.ListView`
+  flex: 1;
+  margin-top: 20;
+  background-color: #222222;
+`;
 
 export default class gif extends Component {
+
+  ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+  //need to set up a blank initial datasource so the listview won't error out
   constructor(props){
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
     this.state = {
-      dataSource: ds.cloneWithRows(data)
+      dataSource: this.ds.cloneWithRows([]),
     };
   }
+
+  //fetch the data that will be loaded into the ListView
+  componentWillMount(){
+    getCategoriesData().then(
+      res => {
+        this.setState({ dataSource: this.ds.cloneWithRows(res) });
+      }
+    );
+  }
+
+  //used by ListOfCategories
+  renderRow = (rowData) =>
+    <CategoryRow
+      title={rowData.title}
+      thumbnailURI={rowData.thumbnailURI}
+    />;
+
   render() {
     return (
-      <ListView
-        style={styles.container}
+      <ListOfCategories
+        enableEmptySections={true}
         dataSource={this.state.dataSource}
-        renderRow={(rowData) =>
-          <CategoryRow
-            title={rowData.title}
-            thumbnailURI={rowData.thumbnailURI}
-          />
-        }
-      >
-      </ListView>
+        renderRow={this.renderRow}
+      />
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 20,
-    backgroundColor: '#333333',
-  },
-});
-
 AppRegistry.registerComponent('gif', () => gif);
-
-// justifyContent: 'center',
-//     alignItems: 'center',
-

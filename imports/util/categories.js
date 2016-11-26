@@ -15,9 +15,7 @@ const DB = {
  * [ret] promise
  */
 export function getCategoriesData() {
-  return DB.categories.get().then(
-    results => results
-  );
+  return DB.categories.get();
 }
 
 /**
@@ -27,4 +25,16 @@ export function getCategoriesData() {
  */
 export function addCategory(category) {
   DB.categories.add(category);
+}
+
+/**
+ *  updates an existing category using filter
+ *  [param] filter:Object
+ *  [param] newCategory:Object
+ *  [ret] promise
+ */
+export function updateCategories(filter, newCategory) {
+  DB.categories.update(
+    newCategory, filter
+  )
 }
