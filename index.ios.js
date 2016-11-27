@@ -3,6 +3,8 @@ import { AppRegistry, NavigatorIOS } from 'react-native';
 import styled from "styled-components/native";
 
 import CategoryList from "./imports/pages/CategoryList.ios";
+// import NewCategory from "./imports/pages/NewCategory.ios";
+
 import { getCategoriesData, updateCategories } from "./imports/util/categories";
 
 const StyledNavigator = styled.NavigatorIOS`
