@@ -8,6 +8,7 @@ const DB = {
 //   title: "Cats",
 //   order: 0,
 //   displayColor: "#ccff00",
+//   thumbnailURI: "",
 // });
 
 /**
@@ -24,6 +25,7 @@ export function getCategoriesData() {
  *  [ret] null
  */
 export function addCategory(category) {
+  // if(category && category.title && category.thumbnailURI)
   DB.categories.add(category);
 }
 

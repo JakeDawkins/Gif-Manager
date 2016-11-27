@@ -39,6 +39,12 @@ export default class CategoryList extends Component {
     );
   }
 
+  componentWillUpdate(){
+    getCategoriesData().then(
+      res => console.log(res)
+    );
+  }
+
   //used by ListOfCategories
   renderRow = (rowData) =>
     <CategoryRow
