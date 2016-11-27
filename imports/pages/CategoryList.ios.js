@@ -41,7 +41,9 @@ export default class CategoryList extends Component {
 
   componentWillUpdate(){
     getCategoriesData().then(
-      res => console.log(res)
+      res => {
+        this.setState({ dataSource: this.ds.cloneWithRows(res) });
+      }
     );
   }
 

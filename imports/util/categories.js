@@ -16,7 +16,7 @@ const DB = {
  * [ret] promise
  */
 export function getCategoriesData() {
-  return DB.categories.get();
+  return DB.categories.find();
 }
 
 /**
