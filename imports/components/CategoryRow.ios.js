@@ -2,12 +2,14 @@ import React from 'react';
 import { Text, View, Image } from 'react-native';
 import styled from "styled-components/native";
 
+import Colors from "../util/colors";
+
 const RowContainer = styled.View`
   align-self: stretch;
   flex-direction: row;
   align-items: center;
   height: 100;
-  background-color: #F0F0F0;
+  background-color: ${Colors.light};
   margin-horizontal: 5;
   margin-top: 5;
   margin-bottom: 0;

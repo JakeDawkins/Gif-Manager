@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, ListView, Button, NavigatorIOS } from 'react-native';
+import { View, ListView, Button } from 'react-native';
 import styled from "styled-components/native";
 
+import Colors from "../util/colors";
 import CategoryRow from "../components/CategoryRow";
 import NewCategory from "./NewCategory.ios";
 import { getCategoriesData } from "../util/categories";
@@ -9,12 +10,12 @@ import { getCategoriesData } from "../util/categories";
 const WrapperView = styled.View`
   flex: 1;
   margin-top: 64;
-  background-color: #222222;
+  background-color: ${Colors.dark};
 `;
 
 const ListOfCategories = styled.ListView`
   flex: 1;
-  background-color: #222222;
+  background-color: ${Colors.dark};
 `;
 
 export default class CategoryList extends Component {
@@ -66,7 +67,7 @@ export default class CategoryList extends Component {
       <WrapperView>
         <Button
           title="New Category"
-          color="#ffffff"
+          color={Colors.light}
           onPress={this.navToNewCategory.bind(this)}
         />
         <ListOfCategories

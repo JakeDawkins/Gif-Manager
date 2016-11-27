@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { View, ListView, Button, Text, TextInput } from 'react-native';
 import styled from "styled-components/native";
 
+import Colors from "../util/colors";
 import { getCategoriesData, addCategory } from "../util/categories";
 
 const WrapperView = styled.View`
   flex: 1;
   margin-top: 64;
   padding: 16
-  background-color: #222222;
+  background-color: ${Colors.dark};
   align-items: center;
   justify-content: center;
 `;
@@ -45,14 +46,14 @@ export default class NewCategory extends Component {
       <WrapperView>
         <Input
           placeholder="New Category Name"
-          placeholderTextColor="#999999"
+          placeholderTextColor={Colors.light}
           onChangeText={(text) => this.setState({"text": text})}
           value={this.state.text}
           autoFocus={true}
         />
         <Button
           title="Submit"
-          color="#B23AEE"
+          color={Colors.tertiary}
           onPress={this.addCategoryPressed}
         />
       </WrapperView>
