@@ -9,7 +9,7 @@ const RowContainer = styled.View`
   flex-direction: row;
   align-items: center;
   height: 100;
-  background-color: ${Colors.light};
+  background-color: ${Colors.dark};
   margin-horizontal: 5;
   margin-top: 5;
   margin-bottom: 0;
@@ -17,20 +17,29 @@ const RowContainer = styled.View`
 `;
 
 const Thumbnail = styled.Image`
+  flex: 1;
   height: 100;
-  width: 100;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const Title = styled.Text`
   font-size: 36;
   font-weight: bold;
-  margin: 10;
+  margin: 30;
+  background-color: purple;
+  color: white;
+  text-align: center;
+  padding-left: 5;
+  padding-right: 5;
 `;
 
 export default CategoryRow = ({thumbnailURI, title}) =>
   <RowContainer>
-    <Thumbnail source={{ uri: thumbnailURI }} />
-    <Title numberOfLines={1}>
-      {title}
-    </Title>
+    <Thumbnail source={{ uri: "https://media.giphy.com/media/3o7TKQXXnn5fwgfHr2/source.gif" }} >
+      <Title numberOfLines={1}>
+        {title}
+      </Title>
+    </Thumbnail>
   </RowContainer>
+
