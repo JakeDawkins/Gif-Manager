@@ -14,7 +14,13 @@ const DB = {
 /**
  * gets all categories
  * [ret] promise
- */
+
+getCategoriesData().then(
+  res => {
+    console.log("categories", res);
+  }
+);
+*/
 export function getCategoriesData() {
   return DB.categories.find();
 }

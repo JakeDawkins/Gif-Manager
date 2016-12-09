@@ -7,6 +7,8 @@ import CategoryRow from "../components/CategoryRow";
 import NewCategory from "./NewCategory.ios";
 import { getCategoriesData } from "../util/categories";
 
+import { addImage, getImagesWithCategory, getAllImages } from "../util/images";
+
 const WrapperView = styled.View`
   flex: 1;
   margin-top: 64;

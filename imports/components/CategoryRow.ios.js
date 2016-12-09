@@ -37,9 +37,7 @@ const Title = styled.Text`
 export default CategoryRow = ({thumbnailURI, title}) =>
   <RowContainer>
     <Thumbnail source={{ uri: "https://media.giphy.com/media/3o7TKQXXnn5fwgfHr2/source.gif" }} >
-      <Title numberOfLines={1}>
-        {title}
-      </Title>
+      { title ? <Title numberOfLines={1}>{title}</Title> : null }
     </Thumbnail>
   </RowContainer>
 
