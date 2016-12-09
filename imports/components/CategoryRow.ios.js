@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableHighlight, StyleSheet } from 'react-native';
 import styled from "styled-components/native";
 
 import Colors from "../util/colors";
@@ -30,14 +30,42 @@ const Title = styled.Text`
   background-color: purple;
   color: white;
   text-align: center;
-  padding-left: 5;
-  padding-right: 5;
+  padding: 5;
 `;
 
-export default CategoryRow = ({thumbnailURI, title}) =>
-  <RowContainer>
-    <Thumbnail source={{ uri: "https://media.giphy.com/media/3o7TKQXXnn5fwgfHr2/source.gif" }} >
-      { title ? <Title numberOfLines={1}>{title}</Title> : null }
-    </Thumbnail>
-  </RowContainer>
+export default class CategoryRow extends React.Component {
+  // = ({thumbnailURI, title, onPress}) =>
 
+  setNativeProps = (nativeProps) => {
+    this._root.setNativeProps(nativeProps);
+  };
+
+  render() {
+    return (
+      <RowContainer>
+        <TouchableHighlight onPress={this.props.onPress} style={styles.highlight}>
+          <Image
+            source={{ uri: "https://media.giphy.com/media/3o7TKQXXnn5fwgfHr2/source.gif" }}
+            ref={component => this._root = component}
+            style={styles.highlight}
+          >
+            {
+              this.props.title
+              ? <Title numberOfLines={1}>{this.props.title}</Title>
+              : null
+            }
+          </Image>
+        </TouchableHighlight>
+      </RowContainer>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  highlight: {
+    flex: 1,
+    height: 100,
+    flexDirection: "column",
+    justifyContent: "center",
+  }
+});

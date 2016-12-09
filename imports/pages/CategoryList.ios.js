@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 import Colors from "../util/colors";
 import CategoryRow from "../components/CategoryRow";
 import NewCategory from "./NewCategory.ios";
+import CategoryDetail from "./CategoryDetail.ios";
 import { getCategoriesData } from "../util/categories";
 
 import { addImage, getImagesWithCategory, getAllImages } from "../util/images";
@@ -55,12 +56,20 @@ export default class CategoryList extends Component {
     <CategoryRow
       title={rowData.title}
       thumbnailURI={rowData.thumbnailURI}
+      onPress={this.navToCategoryDetail.bind(this)}
     />;
 
   navToNewCategory(){
     this.props.navigator.push({
-        title: 'New Category',
-        component: NewCategory
+      title: 'New Category',
+      component: NewCategory
+    })
+  }
+
+  navToCategoryDetail(categoryId, category){
+    this.props.navigator.push({
+      title: "Category Detail",
+      component: CategoryDetail
     })
   }
 
@@ -71,6 +80,11 @@ export default class CategoryList extends Component {
           title="New Category"
           color={Colors.light}
           onPress={this.navToNewCategory.bind(this)}
+        />
+        <Button
+          title="Details"
+          color={Colors.light}
+          onPress={this.navToCategoryDetail.bind(this)}
         />
         <ListOfCategories
           enableEmptySections={true}

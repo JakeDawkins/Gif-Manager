@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ListView, Button } from 'react-native';
+import { View, ListView, Button, Text } from 'react-native';
 import styled from "styled-components/native";
 
 import Colors from "../util/colors";
@@ -37,17 +37,19 @@ export default class CategoryList extends Component {
   render() {
     return (
       <WrapperView>
-        <Button
-          title="New Category"
-          color={Colors.light}
-          onPress={this.navToNewCategory.bind(this)}
-        />
-        <ListOfCategories
-          enableEmptySections={true}
-          dataSource={this.state.dataSource}
-          renderRow={this.renderRow}
-        />
+        <Text>Hello world!</Text>
       </WrapperView>
     );
   }
 }
+
+// <Button
+//   title="New Category"
+//   color={Colors.light}
+//   onPress={this.navToNewCategory.bind(this)}
+// />
+// <ListOfCategories
+//   enableEmptySections={true}
+//   dataSource={this.state.dataSource}
+//   renderRow={this.renderRow}
+// />
