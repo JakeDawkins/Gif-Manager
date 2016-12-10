@@ -12,7 +12,6 @@ import { addImage, getImagesWithCategory, getAllImages } from "../util/images";
 
 const WrapperView = styled.View`
   flex: 1;
-  margin-top: 64;
   background-color: ${Colors.dark};
 `;
 
@@ -56,36 +55,27 @@ export default class CategoryList extends Component {
     <CategoryRow
       title={rowData.title}
       thumbnailURI={rowData.thumbnailURI}
-      onPress={this.navToCategoryDetail.bind(this)}
+      onPress={() => this.navToCategoryDetail(rowData._id, rowData.title)}
     />;
 
   navToNewCategory(){
     this.props.navigator.push({
       title: 'New Category',
-      component: NewCategory
+      component: NewCategory,
     })
   }
 
   navToCategoryDetail(categoryId, category){
     this.props.navigator.push({
-      title: "Category Detail",
-      component: CategoryDetail
+      title: category,
+      component: CategoryDetail,
+      passProps: {categoryId: categoryId},
     })
   }
 
   render() {
     return (
       <WrapperView>
-        <Button
-          title="New Category"
-          color={Colors.light}
-          onPress={this.navToNewCategory.bind(this)}
-        />
-        <Button
-          title="Details"
-          color={Colors.light}
-          onPress={this.navToCategoryDetail.bind(this)}
-        />
         <ListOfCategories
           enableEmptySections={true}
           dataSource={this.state.dataSource}
